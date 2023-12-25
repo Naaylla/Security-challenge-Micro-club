@@ -1,0 +1,1 @@
+This project comprises a web application containing various hidden vulnerabilities. Participants will explore the application, identify security flaws, and gain points by successfully discovering and exploiting these vulnerabilities.
