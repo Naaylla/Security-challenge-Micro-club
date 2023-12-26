@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>login</title>
+    <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+
+    <div class="container">
+        <img class="bg" src="bruno-leschi-El-egS_h_N4-unsplash.jpg">
+        <div class="overlay"></div>
+    </div>
+    
+    <div class="bloc">
+        <div class="margin">
+            <h3>Email:</h3>
+            <input id="emailInput" type="email" placeholder="Email ex: hello@gmail.com">
+        </div>
+    
+        <div class="margin">
+            <br><h3>Password:</h3>
+            <input id="passwordInput" type="password" placeholder="password">
+        </div>
+    
+        <br><button id="loginButton" class="but" disabled onclick="login()">Login</button>
+    
+        <script>
+            // Function to enable/disable the login button based on input values
+            function checkInputs() {
+                var emailInput = document.getElementById('emailInput');
+                var passwordInput = document.getElementById('passwordInput');
+                var loginButton = document.getElementById('loginButton');
+    
+                if (emailInput.value.trim() !== '' && passwordInput.value.trim() !== '') {
+                    loginButton.removeAttribute('disabled');
+                } else {
+                    loginButton.setAttribute('disabled', 'true');
+                }
+            }
+    
+            // Function to handle the login action
+            function login() {
+                var emailInput = document.getElementById('emailInput');
+                var passwordInput = document.getElementById('passwordInput');
+    
+                // Add your login logic here (e.g., validation, authentication)
+    
+                // For demonstration purposes, redirect to another page
+                window.location.href = 'index4.html';
+            }
+    
+            // Add event listeners to the input fields
+            document.getElementById('emailInput').addEventListener('input', checkInputs);
+            document.getElementById('passwordInput').addEventListener('input', checkInputs);
+        </script>
+    </div>
+    
+</body>
+</html>
