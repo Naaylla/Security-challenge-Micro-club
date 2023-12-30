@@ -47,44 +47,49 @@
 
 
 <script>
-  function checkInputs() {
-      var usernameInput = document.getElementById('usernameInput');
-      var emailInput = document.getElementById('emailInput');
-      var passwordInput = document.getElementById('passwordInput');
-      var confirmPasswordInput = document.getElementById('confirmPasswordInput');
-      var createAccountButton = document.getElementById('createAccountButton');
-      var errorText = document.getElementById('errorText');
-
-      var usernameValue = usernameInput.value.trim();
-      var emailValue = emailInput.value.trim();
-      var passwordValue = passwordInput.value.trim();
-      var confirmPasswordValue = confirmPasswordInput.value.trim();
-
-      // Enable the button only if all input fields are filled
-      if (usernameValue !== '' && emailValue !== '' && passwordValue !== '' && confirmPasswordValue !== '') {
-          // Check if passwords match
-          if (passwordValue === confirmPasswordValue) {
-              createAccountButton.removeAttribute('disabled');
-              errorText.style.display = 'none'; // Hide the error message
-          } else {
-              createAccountButton.setAttribute('disabled', 'true');
-              errorText.style.display = 'block'; // Show the error message
-          }
-      } else {
-          createAccountButton.setAttribute('disabled', 'true');
-          errorText.style.display = 'none'; // Hide the error message
-      }
-  }
-
-  // Add this event listener to handle the click
+ 
   document.getElementById('createAccountButton').addEventListener('click', function(event) {
-      // Only proceed if the button is not disabled
-      if (!this.hasAttribute('disabled')) {
-          alert('Account created!');
-      } else {
-          event.preventDefault(); // Prevent form submission
-          alert('Confirm password does not match!');
-      }
+    event.preventDefault();
+    var usernameInput = document.getElementById('usernameInput');
+    var emailInput = document.getElementById('emailInput');
+    var passwordInput = document.getElementById('passwordInput');
+    var confirmPasswordInput = document.getElementById('confirmPasswordInput');
+    var createAccountButton = document.getElementById('createAccountButton');
+    var errorText = document.getElementById('errorText');
+
+    var usernameValue = usernameInput.value.trim();
+    var emailValue = emailInput.value.trim();
+    var passwordValue = passwordInput.value.trim();
+    var confirmPasswordValue = confirmPasswordInput.value.trim();
+
+    if (usernameValue !== '' && emailValue !== '' && passwordValue !== '' && confirmPasswordValue !== '') {
+    
+        if (passwordValue === confirmPasswordValue) {
+            createAccountButton.removeAttribute('disabled');
+            errorText.style.display = 'none'; 
+
+            fetch('http://127.0.0.1:1880/register', {
+                method: 'POST', 
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({usersid:users}), 
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => console.log('Error:', error));
+            
+
+        } else {
+            createAccountButton.setAttribute('disabled', 'true');
+            errorText.style.display = 'block'; 
+        }
+    } else {
+        createAccountButton.setAttribute('disabled', 'true');
+        errorText.style.display = 'none'; 
+    }
   });
 </script>
 
