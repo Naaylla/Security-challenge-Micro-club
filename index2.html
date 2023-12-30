@@ -73,7 +73,11 @@
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({usersid:users}), 
+                body: JSON.stringify({
+                    username: usernameValue,
+                    email: emailValue,
+                    password: passwordValue,
+                }), 
             })
             .then(response => response.json())
             .then(data => {
