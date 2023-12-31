@@ -1,0 +1,254 @@
+* {
+    font-family:Arial, Helvetica, sans-serif;
+  }
+
+  body{
+    background-image: url('Images/—Pngtree—green\ plant\ fresh\ natural\ poster_857372.png'); 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 326%;
+    background-color: rgba(0, 0, 0, 0.7); /* Black with 50% opacity */
+}
+
+nav {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100%;
+    overflow: hidden;
+    transform: translateX(-50%);
+  }
+  
+
+nav a {
+    float: right;
+    display: block;
+    color: white;
+    text-align: right;
+    padding: 14px 16px;
+    text-decoration: none;
+    border-color: blanchedalmond;
+    border-style:solid;
+    margin-right: 30px;
+    margin-top: 50px;
+    border-radius: 10px;
+}
+
+nav a:hover {
+    background-color: #D5F2EA;
+    color: black;
+}
+
+.debut{
+   
+    color: beige;
+    font-family: 'Times New Roman', Times, serif;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 60px;
+    margin-top: 140px;
+   
+}
+
+.deuxieme {
+    color: beige;
+    font-family: 'Times New Roman', Times, serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 40px;
+    margin-top: 500px;
+}
+
+.catg{
+    display: block;
+    background-color: #000D0C;
+    position: absolute;
+    top: 0;
+    height: 740px;
+    width: 1100px;
+    overflow: hidden;
+    z-index: 2;
+    margin-top: 1090px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    border-radius: 10px;
+}
+
+.vin{
+    width: 200px;
+    margin-left: -442px;
+    margin-top: 50px;
+    object-fit: cover; /* Crop the image to cover the container */
+    cursor: pointer; /* Set the cursor to indicate it's clickable */
+    transition: transform 0.3s ease-in-out;
+    position: absolute;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+}
+
+
+.vin:hover {
+    transform: scale(1.1); /* Scale the image on hover */
+}
+
+.splen{
+    width: 200px;
+    margin-top: 50px;
+    left: 40%;
+    margin-top: px;
+    object-fit: cover; /* Crop the image to cover the container */
+    cursor: pointer; /* Set the cursor to indicate it's clickable */
+    transition: transform 0.3s ease-in-out;
+    position: absolute;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+}
+.splen:hover {
+    transform: scale(1.1); /* Scale the image on hover */
+}
+
+.cam{
+    width: 200px;
+    margin-left: 220px;
+    margin-top: 50px;
+    object-fit: cover; /* Crop the image to cover the container */
+    cursor: pointer; /* Set the cursor to indicate it's clickable */
+    transition: transform 0.3s ease-in-out;
+    position: absolute;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+}
+.cam:hover {
+    transform: scale(1.1); /* Scale the image on hover */
+}
+
+
+.eu{
+    width: 200px;
+    margin-left: -442px;
+    margin-top: 390px;
+    object-fit: cover; /* Crop the image to cover the container */
+    cursor: pointer; /* Set the cursor to indicate it's clickable */
+    transition: transform 0.3s ease-in-out;
+    position: absolute;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+}
+
+
+.eu:hover {
+    transform: scale(1.1); /* Scale the image on hover */
+}
+
+.she{
+    width: 200px;
+    margin-top: 390px;
+    left: 40%;
+    object-fit: cover; /* Crop the image to cover the container */
+    cursor: pointer; /* Set the cursor to indicate it's clickable */
+    transition: transform 0.3s ease-in-out;
+    position: absolute;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+}
+.she:hover {
+    transform: scale(1.1); /* Scale the image on hover */
+}
+
+.rus{
+    width: 200px;
+    margin-left: 220px;
+    margin-top: 390px;
+    object-fit: cover; /* Crop the image to cover the container */
+    cursor: pointer; /* Set the cursor to indicate it's clickable */
+    transition: transform 0.3s ease-in-out;
+    position: absolute;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+}
+.rus:hover {
+    transform: scale(1.1); /* Scale the image on hover */
+}
+
+.first{
+    transform: rotate(270deg);
+    margin-top: 175px;
+    margin-left:30px ;
+    color: #D5F2EA; /* Text color */
+    font-size: 22px; /* Font size */
+    font-weight: bold; /* Font weight */
+    position: absolute;
+    top: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.scnd{
+    transform: rotate(270deg);
+    margin-top: 175px;
+    margin-left:340px ;
+    color: #D5F2EA; /* Text color */
+    font-size: 22px; /* Font size */
+    font-weight: bold; /* Font weight */
+    position: absolute;
+    top: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.thrd{
+    transform: rotate(270deg);
+    margin-top: 175px;
+    margin-left:675px ;
+    color: #D5F2EA; /* Text color */
+    font-size: 22px; /* Font size */
+    font-weight: bold; /* Font weight */
+    position: absolute;
+    top: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.frth{
+    transform: rotate(270deg);
+    margin-top: 520px;
+    margin-left:5px ;
+    color: #D5F2EA; /* Text color */
+    font-size: 22px; /* Font size */
+    font-weight: bold; /* Font weight */
+    position: absolute;
+    top: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.fifth{
+    transform: rotate(270deg);
+    margin-top: 520px;
+    margin-left:345px ;
+    color: #D5F2EA; /* Text color */
+    font-size: 22px; /* Font size */
+    font-weight: bold; /* Font weight */
+    position: absolute;
+    top: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.sith{
+    transform: rotate(270deg);
+    margin-top: 520px;
+    margin-left:675px ;
+    color: #D5F2EA; /* Text color */
+    font-size: 22px; /* Font size */
+    font-weight: bold; /* Font weight */
+    position: absolute;
+    top: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
