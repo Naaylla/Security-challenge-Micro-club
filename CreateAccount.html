@@ -87,10 +87,10 @@ document.getElementById('createAccountButton').addEventListener('click', functio
     .then(data => {
         console.log('Success:', data);
         alert('Account created successfully!');
-        // Assuming msg is the format expected by your Node-RED flow
-        node.send({ payload: { username: usernameValue, email: emailValue, password: passwordValue } });
     })
     .catch(error => console.log('Error:', error));
+
+    alert('The pasword is already taken by the user "' + usernameValue + '"!')
 
         } else {
            console.log('password does not match');

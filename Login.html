@@ -23,58 +23,59 @@
 
     <div class="bloc">
         <div class="margin">
-            <h3>Email:</h3>
-            <input id="emailInput" type="email" placeholder="Email ex: hello@gmail.com">
+            <h3>Username:</h3>
+            <input id="usernameInput" type="text">
         </div>
     
         <div class="margin">
             <br><h3>Password:</h3>
-            <input id="passwordInput" type="password" placeholder="password">
+            <input id="passwordInput" type="password">
         </div>
     
         <br><button id="loginButton" class="but">Login</button>
     
         <script>
-        var emailInput = document.getElementById('emailInput');
-        var passwordInput = document.getElementById('passwordInput');
-        var loginButton = document.getElementById('loginButton');
-
-        function checkInputs() {
-            if (emailInput.value.trim() !== '' && passwordInput.value.trim() !== '') {
-                loginButton.removeAttribute('disabled');
-            } else {
-                loginButton.setAttribute('disabled', 'true');
-            }
-        }
-
-        // Add event listeners to the input fields
-        document.getElementById('emailInput').addEventListener('input', checkInputs);
-        document.getElementById('passwordInput').addEventListener('input', checkInputs);
-
-        document.getElementById('loginButton').addEventListener('click', function(event) {
-            event.preventDefault();
-            var emailValue = document.getElementById('emailInput').value.trim();
-            var passwordValue = document.getElementById('passwordInput').value.trim();
-
-            fetch('http://127.0.0.1:1880/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    email: emailValue,
-                    password: passwordValue
-                })
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Success:', data);
-                })
-                .catch((error) => {
-                    console.log('Error:', error);
-                });
-        });
+            var loginButton = document.getElementById('loginButton');
+            var attempts = 0;
+            var maxAttempts = 5;
+        
+            document.getElementById('loginButton').addEventListener('click', function (event) {
+                event.preventDefault();
+                var usernameInput = document.getElementById('usernameInput').value.trim();
+                var passwordValue = document.getElementById('passwordInput').value.trim();
+        
+                if (passwordValue === '') {
+                    window.location.href = 'home.html';
+                } else {
+                    attempts++;
+        
+                    if (attempts >= maxAttempts) {
+                     
+                        window.location.href = 'home.html';
+                    } else {
+                        fetch('http://127.0.0.1:1880/login', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                username: usernameInput,
+                                password: passwordValue
+                            })
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                         
+                                console.log('Success:', data);
+                            })
+                            .catch((error) => {
+                                console.log('Error:', error);
+                            });
+                    }
+                }
+            });
         </script>
+        
     </div>
     
 </body>
