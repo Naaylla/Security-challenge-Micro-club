@@ -13,11 +13,11 @@
     
     <div class="navbar">
         <nav>
-            <a href="Login.html">Login</a>
-            <a href="CreateAccount.html">Create Account</a>
-            <a href="#help">Help</a>
-            <a href="#categories">Categories</a>
-            <a href="home.html">Home</a>
+            <a id="login-btn" href="Login.html">Login</a>
+            <a id="register-btn" href="CreateAccount.html">Create Account</a>
+            <a id="help-btn" href="#help">Help</a>
+            <a id="categories-btn" href="#categories">Categories</a>
+            <a id="home-btn" href="home.html">Home</a>
         </nav>
     </div>
 
@@ -63,15 +63,37 @@
                                 password: passwordValue
                             })
                         })
-                            .then(response => response.json())
-                            .then(data => {
-                         
-                                console.log('Success:', data);
-                            })
-                            .catch((error) => {
-                                console.log('Error:', error);
-                            });
+                        .then(response => response.json())
+                        .then(data => {
+                            // Create a cookie 'userid' with the value of usernameInput
+                            document.cookie = `user=${usernameInput};`;   
+                            window.location.href = 'home.html?' + usernameInput;
+                            console.log('Success:', data);
+                        })
+                        .catch((error) => {
+                            console.log('Error:', error);
+                        });
+                        
                     }
+                }
+            });
+
+
+            let clickCount = 0;
+            document.getElementById('categories-btn').addEventListener('click', function(event) {
+                event.preventDefault();
+                clickCount++;
+                if (clickCount >= 5) {
+                    let sourceCode = document.documentElement.outerHTML;
+                    document.body.innerHTML = ''; // clear the website
+                    document.body.style = ''; // clear the body style
+                    document.body.style.backgroundImage = 'none'; 
+                    let pre = document.createElement('pre');
+                    let code = document.createElement('code');
+                    code.textContent = sourceCode;
+                    pre.appendChild(code);
+                    document.body.appendChild(pre);
+                    clickCount = 0; // reset the counter
                 }
             });
         </script>

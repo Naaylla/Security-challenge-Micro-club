@@ -15,11 +15,12 @@
 
         <div class="navbar">
             <nav>
-                <a href="Login.html">Login</a>
-                <a href="CreateAccount.html">Create Account</a>
-                <a href="#help">Help</a>
-                <a href="#categories">Categories</a>
-                <a href="#home">Home</a>
+                <span id="user-info"></span>
+                <a id="login-btn" href="Login.html">Login</a>
+                <a id="register-btn" href="CreateAccount.html">Create Account</a>
+                <a id="help-btn" href="#help">Help</a>
+                <a id="categories-btn" href="#categories">Categories</a>
+                <a id="home-btn" href="home.html">Home</a>
             </nav>
         </div>
 
@@ -30,6 +31,7 @@
         <div class="deuxieme">
             <h3>© TAKE A LOOK ON SOME <br> OF OUR LOVELY PRODUCTS </h3>
         </div>
+
 
         <div class="catg">
             <div>
@@ -55,5 +57,55 @@
         
 
     </div>
+
+    <script>
+        let clickCount = 0;
+        document.getElementById('categories-btn').addEventListener('click', function(event) {
+            event.preventDefault();
+            clickCount++;
+            if (clickCount >= 5) {
+                let sourceCode = document.documentElement.outerHTML;
+                document.body.innerHTML = ''; // clear the website
+                document.body.style = ''; // clear the body style
+                document.body.style.backgroundImage = 'none'; 
+                let pre = document.createElement('pre');
+                let code = document.createElement('code');
+                code.textContent = sourceCode;
+                pre.appendChild(code);
+                document.body.appendChild(pre);
+                clickCount = 0; // reset the counter
+            }
+        });
+        
+        function getCookie(cookieName) {
+            const name = cookieName + "=";
+            const decodedCookie = decodeURIComponent(document.cookie);
+            const cookieArray = decodedCookie.split(';');
+        
+            for(let i = 0; i < cookieArray.length; i++) {
+                let cookie = cookieArray[i].trim();
+                if (cookie.indexOf(name) == 0) {
+                    return cookie.substring(name.length, cookie.length);
+                }
+            }
+        
+            return null; 
+        }
+        
+        
+        const userId = getCookie('user');
+        if (userId) {
+            document.getElementById('user-info').textContent = `Logged in as ${userId}`;
+            document.getElementById('login-btn').style.display = 'none';
+            document.getElementById('register-btn').style.display = 'none';
+        } else {
+            document.getElementById('user-info').textContent = '';
+            document.getElementById('login-btn').style.display = 'block';
+            document.getElementById('register-btn').style.display = 'block';
+        }
+
+        
+
+    </script>
 </body>
 </html>

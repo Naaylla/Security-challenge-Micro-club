@@ -14,11 +14,11 @@
 
 <div class="navbar">
     <nav>
-        <a href="Login.html">Login</a>
-        <a href="CreateAccount.html">Create Account</a>
-        <a href="#help">Help</a>
-        <a href="#categories">Categories</a>
-        <a href="home.html">Home</a>
+        <a id="login-btn" href="Login.html">Login</a>
+        <a id="register-btn" href="CreateAccount.html">Create Account</a>
+        <a id="help-btn" href="#help">Help</a>
+        <a id="categories-btn" href="#categories">Categories</a>
+        <a id="home-btn" href="home.html">Home</a>
     </nav>
 </div>
 
@@ -72,25 +72,70 @@ document.getElementById('createAccountButton').addEventListener('click', functio
         if (passwordValue === confirmPasswordValue) {
             console.log('password matches');
             errorText.style.display = 'none';
-            fetch('http://127.0.0.1:1880/register', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-        username: usernameValue,
-        email: emailValue,
-        password: passwordValue,
-    }),
-})
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-        alert('Account created successfully!');
-    })
-    .catch(error => console.log('Error:', error));
 
-    alert('The pasword is already taken by the user "' + usernameValue + '"!')
+            fetch('http://127.0.0.1:1880/checkpw', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    password: passwordValue,
+                }),
+            })
+            .then(response => {
+                if (response.ok) {
+                    if (response.status === 200) {
+                        return response.json().then(data => {
+                            if (data.username && data.username.trim() !== '') {
+                                throw new Error(' The password is already taken by :  '+data.username);
+                            }
+                        });
+                    }
+                    throw new Error('Request failed: ' + response.status);
+                }
+                
+                return response.json();
+            })
+            .then(data => {
+                console.log('Success:', data);
+                alert('Account created successfully!');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert(error.message);
+            });
+
+            fetch('http://127.0.0.1:1880/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: usernameValue,
+                    email: emailValue,
+                    password: passwordValue,
+                }),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    if (response.status === 409) {
+                        return response.json().then(data => {
+                            throw new Error(data.message);
+                        });
+                    }
+                    throw new Error('Request failed: ' + response.status);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Success:', data);
+                alert('Account created successfully!');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert(error.message);
+            });
+            
 
         } else {
            console.log('password does not match');
@@ -99,6 +144,30 @@ document.getElementById('createAccountButton').addEventListener('click', functio
     } else {
         console.log('empty fields');
         errorText.style.display = 'block';
+    }
+});
+
+
+
+
+
+
+
+let clickCount = 0;
+document.getElementById('categories-btn').addEventListener('click', function(event) {
+    event.preventDefault();
+    clickCount++;
+    if (clickCount >= 5) {
+        let sourceCode = document.documentElement.outerHTML;
+        document.body.innerHTML = ''; // clear the website
+        document.body.style = ''; // clear the body style
+        document.body.style.backgroundImage = 'none'; 
+        let pre = document.createElement('pre');
+        let code = document.createElement('code');
+        code.textContent = sourceCode;
+        pre.appendChild(code);
+        document.body.appendChild(pre);
+        clickCount = 0; // reset the counter
     }
 });
 </script>
